@@ -1,20 +1,28 @@
-[лого_гитопия](https://user-images.githubusercontent.com/86493242/203382807-e76f6a8b-15dd-42b1-b1bf-e6a14926ee2b.png)
 
-Gitopia - gitopia-janus-testnet-2
-Documentation
+![на-прозрачном-фоне-png](https://user-images.githubusercontent.com/58205039/202901606-ce094fb7-23d9-40f2-9249-3a029c1d1d5c.png)
 
-Hardware Requirements
-8x CPUs; the faster clock speed the better
-64GB RAM
-1TB of storage (SSD or NVME)
-Tools
-This line will be added as soon as possible
+# Gitopia - gitopia-janus-testnet-2
+____
+[Documentation](https://docs.gitopia.com/installation/index.html)
+## Hardware Requirements
++ 8x CPUs; the faster clock speed the better
++ 64GB RAM
++ 1TB of storage (SSD or NVME)
 
-Manual
-Setup Enviroment
+## Tools
+____
+
+## Manual
+___
+
+### Setup Enviroment
+``` bash
 apt update && apt upgrade && \
 apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
-Go
+```
+### Go
+___
+```
 ver="1.19.1" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
 sudo rm -rf /usr/local/go && \
@@ -23,20 +31,32 @@ rm "go$ver.linux-amd64.tar.gz" && \
 echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile && \
 source $HOME/.bash_profile && \
 go version
-Download binaries
+```
+### Download binaries
+___
+```
 git clone -b v1.2.0 gitopia://gitopia/gitopia && cd gitopia
 make install
 gitopiad version
 
 commit: 64e4712aeae3c723346a365d67cf1dd3e91cc50c
 version: 1.2.0
-Init
+### Init
+____
+```
 gitopiad init $MONIKER --chain-id gitopia-janus-testnet-2
-Genesis
+
+```
+### Genesis
+____
+```
 wget https://server.gitopia.com/raw/gitopia/testnets/master/gitopia-janus-testnet-2/genesis.json.gz
 gunzip genesis.json.gz
 mv genesis.json $HOME/.gitopia/config/genesis.json
-Configuration
+```
+### Configuration
+____
+```
 gitopiad config chain-id quark-1
 
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025untrn\"/;" ~/.gitopia/config/app.toml
@@ -56,17 +76,26 @@ sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 50/g' $HOME/.gitop
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $HOME/.gitopia/config/config.toml
 
 sed -i -e "s/^timeout_commit *=.*/timeout_commit = \"2s\"/" $HOME/.gitopia/config/config.toml
-Pruning
+```
+### Pruning
+____
+```
 pruning="custom"
 pruning_keep_recent="1000"
 pruning_interval="10"
 sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.gitopia/config/app.toml
 sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.gitopia/config/app.toml
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.gitopia/config/app.toml
-Indexer
+```
+### Indexer 
+____
+```
 indexer="null"
 sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.gitopia/config/config.toml
-Create Service
+```
+### Create Service
+____
+```
 sudo tee /etc/systemd/system/gitopiad.service > /dev/null <<EOF
 [Unit]
 Description=gitopiad
@@ -82,7 +111,12 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
-Start service
+```
+### Start service
+____
+```
 systemctl daemon-reload
 systemctl enable gitopiad   
 systemctl restart gitopiad && journalctl -u gitopiad -f -o cat
+```
+
