@@ -41,12 +41,13 @@ gitopiad version
 
 commit: 64e4712aeae3c723346a365d67cf1dd3e91cc50c
 version: 1.2.0
+```
 ### Init
 ____
 ```
 gitopiad init $MONIKER --chain-id gitopia-janus-testnet-2
-
 ```
+
 ### Genesis
 ____
 ```
