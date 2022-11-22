@@ -1,6 +1,7 @@
-![на-прозрачном-фоне-png](https://user-images.githubusercontent.com/58205039/202901606-ce094fb7-23d9-40f2-9249-3a029c1d1d5c.png)
+![44263694_UMTnivi7sFamoRxzz5TNz6SOh9EBKkAFz3IuZh3MxHg](https://user-images.githubusercontent.com/86493242/203385164-5a33323d-818f-4ef0-ba64-d7dc89d10f5c.jpg)
 
-# Gitopia - gitopia-janus-testnet-2
+
+# OKP4
 ____
 [Documentation](https://docs.gitopia.com/installation/index.html)
 ## Hardware Requirements
