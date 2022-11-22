@@ -1,5 +1,5 @@
+![44263694_UMTnivi7sFamoRxzz5TNz6SOh9EBKkAFz3IuZh3MxHg](https://user-images.githubusercontent.com/86493242/203385061-e8521535-a577-44ca-8aeb-b1d0d91593ef.jpg)
 
-![на-прозрачном-фоне-png](https://user-images.githubusercontent.com/58205039/202901606-ce094fb7-23d9-40f2-9249-3a029c1d1d5c.png)
 
 # Gitopia - gitopia-janus-testnet-2
 ____
